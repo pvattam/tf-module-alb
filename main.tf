@@ -26,14 +26,14 @@ resource "aws_security_group" "main" {
 }
 
 
-#resource "aws_lb" "main" {
-#  name               = "${var.env}-${var.type}"
-#  internal           = var.internal
-#  load_balancer_type = "application"
-#  security_groups    = [aws_security_group.main.id]
-#  subnets            = var.subnets
-#  tags = merge(var.tags, {Name =  "${var.env}-${var.type}-alb"})
-#}
+resource "aws_lb" "main" {
+  name               = "${var.env}-${var.type}"
+  internal           = var.internal
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.main.id]
+  subnets            = var.subnets
+  tags = merge(var.tags, {Name =  "${var.env}-${var.type}-alb"})
+}
 #
 #resource "aws_lb_listener" "main" {
 #  count = var.enable_https ? 0 : 1
